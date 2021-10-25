@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoContainer from "./components/TodoContainer"
+import TodoContainer from "./components/todoContainer"
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <TodoContainer />
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
 
