@@ -23,12 +23,15 @@ class TodoContainer extends React.Component {
    };
    render() {
     return (
-      // <ul>
-      //   {this.state.todos.map(todo => (
-      //     <li>{todo.title}</li>
-      //   ))}
-      // </ul>
-      <TodosList todos={this.state.todos} />
+      <div>
+        {/* <ul>
+          {this.state.todos.map(todo => (
+            <li>{todo.title}</li>
+          ))}
+        </ul> */}
+        <TodosList todos={this.state.todos} />
+        
+      </div>
     );
   }
 
