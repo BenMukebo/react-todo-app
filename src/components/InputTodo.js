@@ -15,15 +15,18 @@ class InputTodo extends Component {
       [e.target.name]: e.target.value
     });
   };
-  
+
   handleSubmit = e => {
-    e.preventDefault();
-    this.props.addTodoProps(this.state.title);
-    // to clear the input field once we have submitted a todos item for subsequent entry
-    this.setState({
-      title: ""
-    });
-  };
+    e.preventDefault()
+    if (this.state.title.trim()) {
+      this.props.addTodoProps(this.state.title)
+      this.setState({
+        title: "",  // Clear the input field once we have submitted a todos item for subsequent entry
+      })
+    } else {
+      alert("Please write item")
+    }
+  }
 
   render() {
     return (
