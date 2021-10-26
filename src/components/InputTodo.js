@@ -16,9 +16,14 @@ class InputTodo extends Component {
     });
   };
   
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log(this.state.title);
+  };
+  
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input type="text" placeholder="Add todo..."
          value={this.state.title}
          name="title"
