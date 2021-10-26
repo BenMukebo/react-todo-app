@@ -98,8 +98,8 @@ class TodoContainer extends React.Component {
         <Header />
         <InputTodo addTodoProps={this.addTodoItem} />
         <TodosList todos={this.state.todos} 
-        handleChangeProps={this.handleChange} 
-        deleteTodoProps={this.delTodo} />
+          handleChangeProps={this.handleChange} 
+          deleteTodoProps={this.delTodo} />
       </div>
     );
   }
