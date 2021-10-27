@@ -1,48 +1,42 @@
-// import React from "react"
-import { Component } from "react"
+import React from "react"
 import styles from "./TodoItem.module.css"
+import {useState} from 'react'
 
-const completedStyle = {
-  fontStyle: "italic",
-  color: "#595959",
-  opacity: 0.4,
-  textDecoration: "line-through",
-}
+function TodoItem(props) {
 
-class TodoItem extends Component{
-  constructor(props) {
-    super(props)
-    // const { completed, id, title } = this.props.todo;
-    this.state = {
-      editing: false,
-      completed: props.todo.completed,
-      id: props.todo.id,
-      title: props.todo.title
-    }
-
+  const [state, setState] = useState({ editing: false,})
+  const completedStyle = {
+    fontStyle: "italic",
+    color: "#595959",
+    opacity: 0.4,
+    textDecoration: "line-through",
   }
-  handleEditing = () => {
+
+  const handleEditing = () => {
     console.log("edit mode activated")
+    setState({
+      editing: true,
+    })
   }
-  
 
-  render() {
-    return (
-      <li className={styles.item}>
-        <div onDoubleClick={this.handleEditing }>
-          <input
-            type="checkbox"
-            className={styles.checkbox}
-            checked={this.state.completed}
-            onChange={() => this.props.handleChangeProps(this.state.id)}
-          />
-          <button onClick={() => this.props.deleteTodoProps(this.state.id)}>Delete</button>
-          <span style={this.state.completed ? completedStyle : null}>{this.state.title}</span>
-        </div>
-        {/* <input type="text" className={styles.textInput} /> */}
-      </li>
-    )
-  }
+  const { completed, id, title } = props.todo
+  console.log(state);
+  return (
+    <li className={styles.item}>
+      <div onClick={ handleEditing }>
+        <input
+          type="checkbox"
+          className={styles.checkbox}
+          checked={completed}
+          onChange={() => props.handleChangeProps(id)}
+        />
+        <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
+        <span style={completed ? completedStyle : null}>{title}</span>
+      </div>
+    </li>
+  )
+
+
 }
 
 export default TodoItem
