@@ -9,18 +9,24 @@ function TodoItem(props) {
     textDecoration: "line-through",
   }
 
+  const handleEditing = () => {
+    console.log("edit mode activated")
+  }
+
   const { completed, id, title } = props.todo
 
   return (
     <li className={styles.item}>
-      <input
-        type="checkbox"
-        className={styles.checkbox}
-        checked={completed}
-        onChange={() => this.props.handleChangeProps(id)}
-      />
-      <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
-      <span style={completed ? completedStyle : null}>{title}</span>
+      <div onDoubleClick={ handleEditing }>
+        <input
+          type="checkbox"
+          className={styles.checkbox}
+          checked={completed}
+          onChange={() => props.handleChangeProps(id)}
+        />
+        <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
+        <span style={completed ? completedStyle : null}>{title}</span>
+      </div>
     </li>
   )
 
