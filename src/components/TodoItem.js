@@ -20,10 +20,20 @@ function TodoItem(props) {
   }
 
   const { completed, id, title } = props.todo
-  console.log(state);
+  // console.log(state);
+
+  let viewMode = {}
+  let editMode = {}
+
+  if (state.editing) {
+    viewMode.display = "none"
+  } else {
+    editMode.display = "none"
+  }
+
   return (
     <li className={styles.item}>
-      <div onClick={ handleEditing }>
+      <div onClick={ handleEditing } style={viewMode}>
         <input
           type="checkbox"
           className={styles.checkbox}
@@ -33,6 +43,7 @@ function TodoItem(props) {
         <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
         <span style={completed ? completedStyle : null}>{title}</span>
       </div>
+      <input type="text" style={editMode} className={styles.textInput} />
     </li>
   )
 
