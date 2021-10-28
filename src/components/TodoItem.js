@@ -34,8 +34,7 @@ function TodoItem(props) {
   return (
     <li className={styles.item}>
       <div onClick={ handleEditing } style={viewMode}>
-        <input
-          type="checkbox"
+        <input type="checkbox"
           className={styles.checkbox}
           checked={completed}
           onChange={() => props.handleChangeProps(id)}
@@ -43,7 +42,11 @@ function TodoItem(props) {
         <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
         <span style={completed ? completedStyle : null}>{title}</span>
       </div>
-      <input type="text" style={editMode} className={styles.textInput} />
+      <input type="text" style={editMode} 
+      className={styles.textInput} value={title}
+      onChange={e => {
+        console.log(e.target.value, id)
+      }}/>
     </li>
   )
 
