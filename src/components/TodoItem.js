@@ -31,6 +31,10 @@ function TodoItem(props) {
     editMode.display = "none"
   }
 
+  const handleUpdatedDone = event => {
+    console.log(event.key)
+  }
+
   return (
     <li className={styles.item}>
       <div onClick={ handleEditing } style={viewMode}>
@@ -47,7 +51,9 @@ function TodoItem(props) {
       onChange={e => {
         console.log(e.target.value, id)
         this.props.setUpdate(e.target.value, id)
-      }}/>
+      }}
+      onKeyDown={ handleUpdatedDone}
+      />
     </li>
   )
 
