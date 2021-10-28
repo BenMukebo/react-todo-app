@@ -13,7 +13,7 @@ function TodoItem(props) {
   }
 
   const handleEditing = () => {
-    console.log("edit mode activated")
+    // console.log("edit mode activated")
     setState({
       editing: true,
     })
@@ -32,7 +32,10 @@ function TodoItem(props) {
   }
 
   const handleUpdatedDone = event => {
-    console.log(event.key)
+    // console.log(event.key)
+    if (event.key === "Enter") {
+      setState({ editing: false })
+    }
   }
 
   return (
@@ -50,9 +53,9 @@ function TodoItem(props) {
       className={styles.textInput} value={title}
       onChange={e => {
         console.log(e.target.value, id)
-        this.props.setUpdate(e.target.value, id)
+        props.setUpdate(e.target.value, id)
       }}
-      onKeyDown={ handleUpdatedDone}
+      onKeyDown={ handleUpdatedDone }
       />
     </li>
   )
